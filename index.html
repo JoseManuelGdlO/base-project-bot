@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odonto Pediatría - Nueva Ubicación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff7e6 0%, #ffe6f2 50%, #e6f7ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            min-height: 600px;
+        }
+
+        .left-panel {
+            flex: 1;
+            padding: 40px;
+            background: linear-gradient(135deg, #fff7e6 0%, #ffe6f2 50%, #e6f7ff 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .right-panel {
+            flex: 1;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .location-info {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .location-pin {
+            width: 60px;
+            height: 60px;
+            background: #3498db;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            margin: 0 auto 20px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .location-pin::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #2c3e50;
+            border-radius: 50%;
+        }
+
+        .address {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .directions {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .branding {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .heart-icon {
+            width: 40px;
+            height: 40px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-title {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .odonto {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .pediatria {
+            color: #e91e63;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .mouse-icon {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #e91e63;
+            border: 2px solid #e91e63;
+        }
+
+        .especialista {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .dashed-line {
+            flex: 1;
+            height: 2px;
+            background: repeating-linear-gradient(
+                to right,
+                #bdc3c7 0,
+                #bdc3c7 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            margin: 0 20px;
+        }
+
+        .phone-container {
+            position: relative;
+            width: 300px;
+            height: 500px;
+        }
+
+        .phone {
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+            border-radius: 30px;
+            position: relative;
+            transform: rotate(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .phone-screen {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: #ecf0f1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .map {
+            width: 100%;
+            height: 100%;
+            background-image: url('map-image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .map-pin-phone {
+            position: absolute;
+            top: 45%;
+            left: 48%;
+            width: 25px;
+            height: 25px;
+            background: #e74c3c;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .map-pin-phone::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 80px;
+            background: #fdbcb4;
+            border-radius: 30px 30px 10px 10px;
+            transform: rotate(-15deg);
+        }
+
+        .hand::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            width: 15px;
+            height: 20px;
+            background: #fdbcb4;
+            border-radius: 10px;
+        }
+
+        .pushpins {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .pushpin {
+            width: 8px;
+            height: 12px;
+            background: #e74c3c;
+            border-radius: 50% 50% 0 0;
+            margin: 2px;
+            display: inline-block;
+        }
+
+        .connecting-line {
+            position: absolute;
+            top: 50%;
+            left: -100px;
+            width: 200px;
+            height: 2px;
+            background: repeating-linear-gradient(
+                to right,
+                #2c3e50 0,
+                #2c3e50 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .phone-container {
+                width: 250px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div>
+                <h1 class="main-title">VISÍTANOS</h1>
+                <p class="subtitle">ESTAMOS ESTRENANDO UBICACIÓN</p>
+                
+                <div class="location-info">
+                    <div class="location-pin"></div>
+                    <p class="address">El Atardecer 162, Residencial El Atardecer</p>
+                    <div class="directions">
+                        La calle frente al colegio REX, entre la entrada al fraccionamiento El Lago y Linda Vista
+                    </div>
+                </div>
+            </div>
+            
+            <div class="branding">
+                <div class="heart-icon">♥</div>
+                <div class="logo">
+                    <div class="logo-title">
+                        <span class="odonto">ODONTO</span>
+                        <div class="mouse-icon">🐭</div>
+                        <span class="pediatria">PEDIATRÍA</span>
+                    </div>
+                    <div class="especialista">ESPECIALISTA</div>
+                </div>
+                <div class="dashed-line"></div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="phone-container">
+                <div class="connecting-line"></div>
+                <div class="phone">
+                    <div class="phone-screen">
+                        <div class="map">
+                            <div class="map-pin-phone"></div>
+                            <div class="hand"></div>
+                            <div class="pushpins">
+                                <div class="pushpin"></div>
+                                <div class="pushpin"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
